@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+    
+    function computerPlay(){
+
+        let choices = ["Rock","Paper","Scissors"];
+        let randomChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        return randomChoice;
+    }
+    function playRound(playerSelection, computerSelection){
+        if(playerSelection.toUpperCase() == computerSelection.toUpperCase())
+            return -1;
+        if(playerSelection.toUpperCase() == "ROCK")
+            if(computerSelection.toUpperCase() == "PAPER")
+                return 0;
+            else
+                return 1;
+        if(playerSelection.toUpperCase() == "PAPER")
+            if(computerSelection.toUpperCase() == "SCISSORS")
+                return 0;
+            else
+                return 1;
+        if(playerSelection.toUpperCase() == "SCISSORS")
+            if(computerSelection.toUpperCase() == "ROCK")
+                return 0;
+            else
+                return 1;
+    }
+
+    function game(){
+        let playerScore = 0;
+        let computerScore = 0;
+        for(let i = 0;i < 5;i ++){
+            let computerSelection = computerPlay();
+            let playerSelection = prompt("Please enter your choice: [Rock/Paper/Scissors]");
+            
+            if(playRound(playerSelection, computerSelection) == 0)
+                computerScore++;
+            else
+                if(playRound(playerSelection, computerSelection) == 1)
+                    playerScore++;
+        }
+        console.log("The score is : Computer->" + computerScore + "; Player->" + playerScore);
+        if(playerScore == computerScore)
+            console.log("It's a draw!");
+        else
+            if(playerScore < computerScore)
+                console.log("Computer wins!");
+            else
+                console.log("Player wins!");
+    }
+
+    game();
+
+  </script>
+</body>
+</html>
